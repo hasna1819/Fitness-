@@ -1,0 +1,298 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: #F9F6F4;
+  --color-foreground: #1D1D1F;
+  --color-card: #FFFFFF;
+  --color-card-foreground: #1D1D1F;
+  --color-popover: #FFFFFF;
+  --color-popover-foreground: #1D1D1F;
+  --color-primary: #111111;
+  --color-primary-foreground: #FFFFFF;
+  --color-secondary: #F0EBE6;
+  --color-secondary-foreground: #1D1D1F;
+  --color-muted: #F4F0EC;
+  --color-muted-foreground: #8E8E93;
+  --color-accent: #E5A996;
+  --color-accent-foreground: #1D1D1F;
+  --color-destructive: #FF6B6B;
+  --color-destructive-foreground: #FFFFFF;
+  --color-border: #E8E2DD;
+  --color-input: #E8E2DD;
+  --color-ring: #E5A996;
+  --color-chart-1: #111111;
+  --color-chart-2: #E5A996;
+  --color-chart-3: #9BA9FF;
+  --color-chart-4: #F8D3B4;
+  --color-chart-5: #B5EAD7;
+  --color-sidebar: #FFFFFF;
+  --color-sidebar-foreground: #8E8E93;
+  --color-sidebar-primary: #111111;
+  --color-sidebar-primary-foreground: #FFFFFF;
+  --color-sidebar-accent: #F4F0EC;
+  --color-sidebar-accent-foreground: #1D1D1F;
+  --color-sidebar-border: #E8E2DD;
+  --color-sidebar-ring: #E5A996;
+  --radius-sm: 0.5rem;
+  --radius-md: 0.75rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.5rem;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+/* ===== Base Styles ===== */
+* {
+  border-color: var(--color-border);
+}
+
+body {
+  background: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+
+/* ===== Animations ===== */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse-soft {
+
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft 0.3s ease-out;
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background-size: 200% 100%;
+  animation: shimmer 2s linear infinite;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+/* Stagger animations */
+.stagger-1 {
+  animation-delay: 50ms;
+}
+
+.stagger-2 {
+  animation-delay: 100ms;
+}
+
+.stagger-3 {
+  animation-delay: 150ms;
+}
+
+.stagger-4 {
+  animation-delay: 200ms;
+}
+
+.stagger-5 {
+  animation-delay: 250ms;
+}
+
+.stagger-6 {
+  animation-delay: 300ms;
+}
+
+.stagger-7 {
+  animation-delay: 350ms;
+}
+
+.stagger-8 {
+  animation-delay: 400ms;
+}
+
+/* ===== Glass Effect ===== */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Gradient Text ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-primary), #8E8E93);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Chart Tooltip ===== */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: var(--color-card) !important;
+  border: 1px solid var(--color-border) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4) !important;
+}
+
+/* ===== Sidebar Link ===== */
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.875rem;
+  border-radius: var(--radius-lg);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-sidebar-foreground);
+  transition: all 0.2s ease;
+}
+
+.sidebar-link:hover {
+  background: var(--color-sidebar-accent);
+  color: var(--color-foreground);
+}
+
+.sidebar-link.active {
+  background: rgba(17, 17, 17, 0.05);
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+/* ===== Table ===== */
+.table-dark {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table-dark thead th {
+  padding: 0.875rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-muted-foreground);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.table-dark tbody td {
+  padding: 0.75rem 1rem;
+  color: var(--color-foreground);
+  border-bottom: 1px solid rgba(30, 30, 58, 0.5);
+}
+
+.table-dark tbody tr {
+  transition: background 0.15s;
+}
+
+.table-dark tbody tr:hover {
+  background: rgba(17, 17, 17, 0.03);
+}
+
+/* ===== SVG Activity Ring ===== */
+.activity-ring {
+  transform: rotate(-90deg);
+}
+
+.activity-ring circle {
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ===== Toasts ===== */
+[data-sonner-toaster],
+.go2072408551 {
+  --normal-bg: var(--color-card) !important;
+  --normal-text: var(--color-foreground) !important;
+  --normal-border: var(--color-border) !important;
+}
